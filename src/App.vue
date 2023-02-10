@@ -1,19 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <battle-view></battle-view>
+    <button type="button" @click="initiate">Initial</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BattleView from "@/components/BattleView";
+import { randomValueTest } from "@/services/UtilityService";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    BattleView,
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    initiate() {
+      console.log(randomValueTest(1, 2, 10000000));
+    },
+  },
+};
 </script>
 
 <style>
