@@ -1,14 +1,19 @@
-class Monster {
+import Actor from "@/classes/Actor";
+
+class Monster extends Actor {
   constructor(id, img, name, hp, atk, speed) {
-    this.id = id;
-    this.img = img;
-    this.name = name;
-    this.hp = hp;
-    this.atk = atk;
-    this.speed = speed;
+    super(id, img, name);
+    super.hp = hp;
+    super.maxHp = this.hp;
+    super.atk = atk;
+    super.speed = speed;
   }
   attack(hero) {
-    hero.hp -= this.atk;
+    console.log("отработало");
+    if (this.stamina > 0) {
+      this.stamina--;
+      hero.hp -= this.atk;
+    }
   }
 }
 

@@ -18,7 +18,7 @@
       </ul>
       <ul style="display: flex">
         <li v-for="hero of heroes" :key="hero.name">
-          <monster-view :monster="hero"></monster-view>
+          <hero-view :hero="hero"></hero-view>
         </li>
       </ul>
       <button type="button" v-if="inBattle" @click="nextMove">Next Move</button>
@@ -32,9 +32,10 @@ import MonsterView from "@/components/MonsterView";
 import GetMonsterService from "@/services/GetMonsterService";
 import { gl } from "@/services/GameLoopService";
 import { Hero, shadowState } from "@/classes/Hero";
+import HeroView from "@/components/HeroView";
 export default {
   name: "BattleView",
-  components: { MonsterView },
+  components: { HeroView, MonsterView },
   data() {
     return {
       monsters: GetMonsterService(3),

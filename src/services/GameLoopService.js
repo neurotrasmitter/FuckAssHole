@@ -18,6 +18,7 @@ class GameLoop {
   }
 
   nextMove() {
+    console.log(this.queue);
     if (this.queue.every((el) => el instanceof Monster)) {
       return loosingState;
     }
@@ -44,11 +45,12 @@ class GameLoop {
 
   _popAllDead() {
     let currentArray = [];
-    for (let el of this.queue) {
+    this.queue.forEach((el) => {
       if (el.hp > 0) {
         currentArray.push(el);
       }
-    }
+    });
+    console.log(currentArray);
     this.queue = currentArray;
   }
 
@@ -81,6 +83,7 @@ class GameLoop {
 
   _nextPosition() {
     if (this.currentActorIndex >= this.queue.length - 1) {
+      this.queue.forEach((el) => el.workOutTheState());
       this.currentActorIndex = 0;
     } else {
       this.currentActorIndex++;

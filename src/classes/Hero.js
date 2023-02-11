@@ -1,17 +1,24 @@
-class Hero {
+import Actor from "@/classes/Actor";
+
+class Hero extends Actor {
   constructor(id, img, name, str, dex, con) {
-    (this.id = id), (this.img = img);
-    this.name = name;
+    super(id, img, name);
     this.str = str;
     this.dex = dex;
     this.con = con;
-    this.atk = Math.floor(this.str / 2);
-    this.hp = Math.floor(this.con / 2);
-    this.speed = Math.floor(this.dex / 2);
+    super.atk = Math.floor(this.str / 2);
+    super.hp = Math.floor(this.con / 2);
+    super.maxHp = this.hp;
+    super.speed = Math.floor(this.dex / 2);
+    super.stamina = Math.floor(this.dex / 4) ? Math.floor(this.dex / 4) : 1;
+    super.maxStamina = this.stamina;
   }
 
   attack(monster) {
-    monster.hp -= this.atk;
+    if (this.stamina > 0) {
+      this.stamina--;
+      monster.hp -= this.atk;
+    }
   }
 }
 
